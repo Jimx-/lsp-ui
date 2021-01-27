@@ -300,7 +300,8 @@ Because some variables are buffer local.")
           (markdown-hr-display-char nil))
      (cond
       (lsp-ui-doc-use-webkit
-       (if (and language (not (string= "text" language)))
+       (if (and language (not (or (string= "text" language)
+                                  (string= "markdown" language))))
            (format "```%s\n%s\n```" language string)
          string))
       (t (lsp--render-element (lsp-ui-doc--inline-formatted-string string)))))))
